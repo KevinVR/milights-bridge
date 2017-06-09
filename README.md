@@ -26,7 +26,6 @@ Use the application at your own risk. I am not responsible for anything that hap
 - *NPM* must be installed.
 `sudo apt-get update`
 `sudo apt-get install npm`
-- *milights-bridge* only runs on linux machines.
 
 ## Installation
 
