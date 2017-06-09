@@ -1,0 +1,32 @@
+{
+  "name": "milights-bridge",
+  "version": "1.0.0",
+  "description": "Control your milight lights using this NodeJS application.",
+  "main": "server.js",
+  "directories": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinVR/milights-bridge.git"
+  },
+  "keywords": [
+    "milight",
+    "lights",
+    "bridge"
+  ],
+  "author": "Kevin Van Ryckegem",
+  "license": "CC BY-NC-SA 3.0",
+  "bugs": {
+    "url": "https://github.com/KevinVR/milights-bridge/issues"
+  },
+  "homepage": "https://github.com/KevinVR/milights-bridge#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "node-milight-promise": "^0.1.3"
+  }
+}
