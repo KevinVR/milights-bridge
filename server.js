@@ -176,9 +176,11 @@ app.get('/api/test_alarm', function(req, res) {
 	res.send();
 });
 
+// TODO
 app.get('/api/last_hue', function(req, res) {
 	console.log("GET Last hue");
-	light.sendCommands(commands.fullColor.effectModeNext(zone));
+	//light.sendCommands(commands.fullColor.effectModeNext(zone));
+	//light.sendCommands(commands.rgbw.effectModeNext(zone));
 	res.send();
 });
 
@@ -186,20 +188,27 @@ app.get('/api/last_hue', function(req, res) {
 app.get('/api/mode', function(req, res) {
 	console.log("Next mode");
 	light.sendCommands(commands.fullColor.effectModeNext(zone));
+	light.sendCommands(commands.rgbw.effectModeNext(zone));
 	res.send();
 });
 
 app.get('/api/mode_slow', function(req, res) {
 	console.log("Mode slower");
 	for(i = 0; i < 50; i++)
+	{
 		light.sendCommands(commands.fullColor.effectSpeedDown(zone));
+		light.sendCommands(commands.rgbw.effectSpeedDown(zone));
+	}
 	res.send();
 });
 
 app.get('/api/mode_fast', function(req, res) {
 	console.log("Mode faster");
 	for(i = 0; i < 50; i++)
+	{
 		light.sendCommands(commands.fullColor.effectSpeedUp(zone));
+		light.sendCommands(commands.rgbw.effectSpeedUp(zone));
+	}
 	res.send();
 });
 
@@ -359,13 +368,36 @@ function dimAndTurnOn() {
 	light.sendCommands(commands.fullColor.on(alarmZone));
 	light.sendCommands(commands.fullColor.whiteTemperature(alarmZone, 20));
 	light.sendCommands(commands.fullColor.brightness(alarmZone, 0));
+
+	// Repeat for any other lights
+	light.sendCommands(commands.white.on(alarmZone));
+	for(i = 0; i < 10; i++) // White lights have only ten steps and no setTo(X) command
+	{
+		light.sendCommands(commands.white.warmer(alarmZone));
+		light.sendCommands(commands.white.brightDown(alarmZone));
+	}
+
+	// Repeat for any other lights
+	light.sendCommands(commands.rgbw.brightness(alarmZone, 0));
+	light.sendCommands(commands.rgbw.on(alarmZone));
+	light.sendCommands(commands.rgbw.brightness(alarmZone, 0));
+
+
 }
 
 function alarmCallback() {
 	console.log("AlarmCallback()");
 	alarmBrightness++;
 
-	light.sendCommands(commands.fullColor.brightness(alarmZone, alarmBrightness));
+	light.sendCommands(commands.fullColor.brightness(alarmZone, alarmBrightness),
+										commands.rgbw.brightness(alarmZone, alarmBrightness));
+
+  // White lights have only ten steps and no setTo(X) command
+	// So instead, for every 10%, make it brighter.
+  if((alarmBrightness % 10) == 0)
+	{
+		light.sendCommands(commands.white.brightUp(alarmZone));
+	}
 
 	if(alarmBrightness < 101)
 	{
