@@ -332,8 +332,8 @@ var testMode = false;
 
 function testAlarm() {
 	testMode = true;
-	alarmAt = new Date().getTime() + minsToMs(2);
-	minutesToAlarm = 2;
+	alarmAt = new Date().getTime() + minsToMs(1);
+	minutesToAlarm = 1;
 	startAlarm();
 	testMode = false;
 }
