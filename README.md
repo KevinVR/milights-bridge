@@ -49,7 +49,7 @@ or
 - Install *forever*
 `sudo npm install -g forever`
 - Run *milights-bridge* using *forever* (inside *milights-bridge* folder)
-`sudo forever server.js`
+`sudo forever start server.js`
 
 ## Update
 - Stop *milights-bridge* (inside *milights-bridge* folder)
