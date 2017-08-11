@@ -485,11 +485,16 @@ function getLastCommitId() {
 }
 
 function getLatestVersionId() {
-	var latest = require('child_process')
-	.execSync('git ls-remote  https://github.com/KevinVR/milights-bridge.git HEAD')
-	.toString().trim();
-
-	return latest.split("	")[0];
+	var child_process = require('child_process');
+	if (!child_process.execSync) {
+		"Error cannot query Github - to be fixed in next release."
+	}
+	else {
+		return child_process
+		.execSync('git ls-remote  https://github.com/KevinVR/milights-bridge.git HEAD')
+		.toString().trim()
+		.split(" ")[0];
+	}
 }
 
 function refreshUpdateCache()
