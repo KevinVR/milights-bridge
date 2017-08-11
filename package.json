@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Control your milight lights using this NodeJS application.",
   "main": "server.js",
-  "directories": {
-  },
+  "directories": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -25,8 +24,10 @@
   },
   "homepage": "https://github.com/KevinVR/milights-bridge#readme",
   "dependencies": {
+    "child_process": "^1.0.2",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "ip": "^1.1.5",
     "node-milight-promise": "^0.1.3"
   }
 }

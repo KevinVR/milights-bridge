@@ -473,9 +473,15 @@ function minsToMs(mins) {
 
 // About page FUNCTIONS
 function getLastCommitId() {
-	return require('child_process')
-		.execSync('git rev-parse HEAD')
-		.toString().trim();
+	var child_process = require('child_process');
+	if (!child_process.execSync) {
+		"Error cannot query Github - to be fixed in next release."
+	}
+	else {
+		return child_process
+			.execSync('git rev-parse HEAD')
+			.toString().trim();
+	}
 }
 
 function getLatestVersionId() {
