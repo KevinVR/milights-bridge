@@ -14,6 +14,9 @@ Milights-bridge is a remote control application for your Milight lights. The lay
 ## Recommendations
 It is recommended to run the milights-bridge application on a device similar to the *Raspberry Pi*. We are not affiliated, however, the *Raspberry Pi* is advantageous for its low consumption power while still having a CPU powerful enough to run this.
 
+## Google Home
+[An extensive tutorial of how to use this software to allow your Google Home to control your Milight lights can be found here](https://hackaday.io/project/25394-how-to-use-your-milight-lights-with-google-home).
+
 ## Security
 While *milights-bridge* isn't particularly unsecure, allowing internet traffic to it is not a good idea, since anybody would have control over your lights. Securing it with a password is not an option either, as that would make the API less accessible for 3rd party applications.
 
