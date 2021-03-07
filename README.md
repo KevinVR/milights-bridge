@@ -1,5 +1,7 @@
 # milights-bridge
 
+# :warning: This application is deprecated and is not supported anymore. Feel free to take a look at [milights-rest](https://github.com/jbchouinard/milights-rest): a fork from this project, which has been updated and provides a great REST interface.
+
 Milights-bridge is a remote control application for your Milight lights. The layout works well on both computers and mobile devices. It provides a GUI as well as an API for third-party applications.
 
 ## Features
